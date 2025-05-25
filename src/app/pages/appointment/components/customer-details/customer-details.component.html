@@ -1,0 +1,23 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center center"
+    fxLauoutGap="2%">
+    <div fxFlex="12px"></div>
+    <h4>Datele tale:</h4>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="2%">
+        <mat-form-field fxFlex="49%" appearance="outline" class="full-width">
+            <mat-label>Nume</mat-label>
+            <input matInput formControlName="name" />
+            <mat-error *ngIf="customerForm.get('name')?.hasError('required')">
+                Numele este obligatoriu
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="49%" appearance="outline" class="full-width">
+            <mat-label>Număr de telefon</mat-label>
+            <input matInput formControlName="phone" />
+            <mat-error>Număr de telefon invalid</mat-error>
+        </mat-form-field>
+    </div>
+    <button mat-stroked-button color="primary" type="submit" [disabled]="customerForm.invalid">
+        <span class="text-m">Următorul pas</span>
+    </button>
+</form>

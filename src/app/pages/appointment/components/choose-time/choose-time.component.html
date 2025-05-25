@@ -1,0 +1,40 @@
+<div *ngIf="employee" fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" fxLayoutGap="2%">
+
+
+    <h4>Serviciu selectat:</h4>
+    <div class="sub-service-container" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="2%">
+        <ng-container *ngFor="let subservice of employee.subServicesPerformed">
+            <div fxLayout="column">
+                <button *ngIf="subservice === selectedSubService; else defaultButton" fxFlexOffset="6px" color="primary"
+                    mat-flat-button (click)="onSelectSubService(subservice)">
+                    <span class="text-m">{{ subservice.name }}</span>
+                </button>
+
+                <ng-template #defaultButton>
+                    <button mat-stroked-button color="primary" fxFlexOffset="6px"
+                        (click)="onSelectSubService(subservice)">
+                        <span class="text-m">{{ subservice.name }}</span>
+                    </button>
+                </ng-template>
+            </div>
+        </ng-container>
+    </div>
+
+    <mat-card class="inline-calendar-card" *ngIf="!selectedDate && selectedSubService">
+        <mat-calendar ngSkipHydration [(selected)]="selectedDate" [minDate]="minDate" [dateFilter]="dateFilter"
+            (selectedChange)="onDateChange($event)"></mat-calendar>
+    </mat-card>
+
+
+    <div *ngIf="selectedDate && selectedSubService">
+        <h5>Selectează intervalul orar pentru (durată {{selectedSubService.duration + ' min'}}): {{ selectedDate |
+            date:'fullDate':'':'ro-RO' }}</h5>
+        <div fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="2%">
+            <div fxLayout="column" *ngFor="let time of availableTimes">
+                <button mat-stroked-button color="primary" fxFlexOffset="6px" (click)="onSelectTime(time)">
+                    <span class="text-m">{{ time }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

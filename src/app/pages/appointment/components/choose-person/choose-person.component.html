@@ -1,0 +1,29 @@
+<div fxLayout="column" fxFlex="100%">
+    <div fxLayoutAlign="center center">
+        <h4>ALEGE STILISTUL DORIT</h4>
+    </div>
+    <div fxLayout="column" fxLayoutGap="2%">
+        <div *ngFor="let service of serviceTypes" class="service-section">
+            <h4 class="service-title">{{ service.name }}</h4>
+            <div fxLayout="row wrap" fxLayoutGap="2%">
+                <div fxLayout="column"  *ngFor="let emp of service.employees">
+                    <div class="person-card" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="6px"  fxFlexOffset="6px"
+                         (click)="onSelectEmployee(emp)"
+                        (keydown.enter)="onSelectEmployee(emp)">
+                        <div class="person-img" fxLayoutAlign="center center">
+                            <img class="card-img" [src]="emp.picture" [alt]="emp.name"
+                                *ngIf="emp.picture; else noPhoto" />
+                            <ng-template #noPhoto>
+                                <img class="card-img" [src]="defaultProfilePicture" [alt]="emp.name" />
+                            </ng-template>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="4px">
+                            <span class="card-name text-xs">{{ emp.name }}</span>
+                            <span class="card-title text-xs">{{ emp.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

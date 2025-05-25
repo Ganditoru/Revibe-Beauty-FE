@@ -1,0 +1,30 @@
+<div fxLayout="column" fxLayoutAlign="start center" fxFlex="100%">
+    <ngb-carousel class="carousel-container" *ngIf="carouselList && carouselList.length" [interval]="4000"
+        [showNavigationArrows]="true">
+        <ng-template ngbSlide *ngFor="let elem of carouselList; let i = index">
+            <div fxLayoutAlign="center" class="carousel-image-container">
+                <img class="carousel-image" [src]="elem.img" alt="Slide {{ i + 1 }}" />
+            </div>
+            <div class="carousel-caption" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="12px">
+                <h3>{{ elem.description }}</h3>
+                <button *ngIf="i === 1; else normalBtn" mat-raised-button>Alăturăte echipei</button>
+                <ng-template #normalBtn>
+                    <button mat-raised-button (click)="goToAppointment()">Programează-te aici</button>
+                </ng-template>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+    <mat-card appearance="outlined" >
+        <mat-card-content>
+            <div class="content-container" fxLayout="column" fxLayoutAlign="start center">
+                <h1>Bine ai venit</h1>
+                <div *ngFor="let detail of pageDetails" class="text-block">
+                    <h3 class="text-block__title">{{ detail.title }}</h3>
+                    <p class="text-l">
+                        {{ detail.paragraph }}
+                    </p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

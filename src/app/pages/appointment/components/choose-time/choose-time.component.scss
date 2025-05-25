@@ -1,0 +1,19 @@
+:host {
+    .sub-service-container {
+        width: 100%;
+    }
+
+    .inline-calendar-card {
+        width: 500px;
+    }
+
+    .text-m {
+        padding-top: 6px;
+    }
+
+    @media (max-width: 600px) {
+        .inline-calendar-card {
+            width: 300px;
+        }
+    }
+}

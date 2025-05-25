@@ -1,0 +1,14 @@
+<mat-stepper class="content-container" [linear]="true" #stepper>
+  <mat-step label="Alege stilistul">
+    <app-choose-person [serviceTypes]="serviceTypes" (selectEmployee)="onSelectEmployee($event)"></app-choose-person>
+  </mat-step>
+  <mat-step [label]="timeStepLabel">
+    <app-choose-time [selectedEmployee]="selectedEmployee" (selectedAppointmentTime)="onChooseTime($event)"></app-choose-time>
+  </mat-step>
+  <mat-step label="Detalii despre tine">
+    <app-customer-details (onSetCustomerDetails)="onSetCustomerDetails($event)"></app-customer-details>
+  </mat-step>
+  <mat-step label="Confirmare">
+    <app-confirm-rezervation [appointment]="appointment" (goHome)="onGoHome()"></app-confirm-rezervation>
+  </mat-step>
+</mat-stepper>

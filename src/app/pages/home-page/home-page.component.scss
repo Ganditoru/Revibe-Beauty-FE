@@ -1,0 +1,16 @@
+:host {
+
+    .carousel-container {
+        width: 100%;
+        overflow: hidden;
+
+        .carousel-image-container {
+            width: 100%;
+            overflow: hidden;
+
+            .carousel-image {
+                height: clamp(30vh, 60vw, 70vh);
+            }
+        }
+    }
+}

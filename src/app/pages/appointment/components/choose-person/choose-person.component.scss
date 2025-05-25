@@ -1,0 +1,25 @@
+:host {
+
+    .person-card {
+        padding: 12px;
+        width: 110px;
+        border-style: none;
+        border-width: 1px;
+        border-color: rgb(107, 107, 107);
+        background-color: rgb(247, 247, 247);
+        border-radius: 10px;
+        cursor: pointer;
+
+        .person-img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+}

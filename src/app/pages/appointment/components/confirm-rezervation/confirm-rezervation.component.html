@@ -1,0 +1,10 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <h3>Rezervare realizată cu succes !!!</h3>
+    <div fxLayout="column">
+        <span>Nume client: {{appointment?.customerName}} - {{appointment?.customerPhone}} </span>
+        <span>Data si timpul rezervarii: {{ appointment?.startTime | date:'dd MMMM y, HH:mm':'':'ro-RO' }}</span>
+        <span>Serviciu: {{ appointment?.subService?.name }} ({{ appointment?.subService?.duration }} min)</span>
+        <span>Stilist: {{ appointment?.employee?.name }}</span>
+    </div>
+    <button mat-stroked-button color="primary" fxFlexOffset="12px" (click)="onGoHome()"><span class="text-m">Home</span></button>
+</div>

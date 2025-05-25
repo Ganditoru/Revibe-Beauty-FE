@@ -21,6 +21,7 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
+              "@angular/localize/init",
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
@@ -32,6 +33,7 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": [],
@@ -47,7 +49,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -67,6 +69,11 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "ssl": true,
+            "sslKey": "ssl/localhost.key",
+            "sslCert": "ssl/localhost.crt"
+          },
           "configurations": {
             "production": {
               "buildTarget": "revibe-beauty-fe:build:production"
@@ -84,6 +91,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
+              "@angular/localize/init",
               "zone.js",
               "zone.js/testing"
             ],
@@ -96,6 +104,7 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,0 +1,41 @@
+<mat-toolbar class="header-container" fxLayout="row" fxLayoutAlign="start center">
+    <div fxFlex="20%">
+        <button class="mobile-toggle" mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </div>
+    <div fxFlex="60%" fxLayout="row" fxLayoutAlign="center center">
+        <a href="/" class="page-logo">Revibe Beauty</a>
+        <div class="nav-links">
+            <nav fxLayout="row" fxLayoutAlign="space-around center">
+                <a class="nav-link" routerLinkActive="active" routerLink="/"
+                    [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/appointment">Programare online</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/servicii">Servicii</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div fxFlex="20%" fxLayoutAlign="center">
+        <button mat-icon-button>
+            <mat-icon>person_outline</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav #drawer mode="over" class="mobile-sidenav" [fixedInViewport]="true">
+        <mat-nav-list>
+            <a mat-list-item href="/">Home</a>
+            <a mat-list-item href="/appointment">Programare online</a>
+            <a mat-list-item href="/servicii">Servicii</a>
+            <a mat-list-item href="/contact">Contact</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div class="main-content">
+            <ng-content></ng-content>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
